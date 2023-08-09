@@ -1,9 +1,9 @@
 from datetime import date
 
 from sqlalchemy import ForeignKey, String, Integer, DateTime, func
-from sqlalchemy.orm import relationship, declarative_base, Mapped, mapped_column
+from sqlalchemy.orm import relationship, Mapped, mapped_column
 
-Base = declarative_base()
+from src.database.connector import Base
 
 
 class Contact(Base):
