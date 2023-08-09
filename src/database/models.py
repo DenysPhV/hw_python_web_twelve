@@ -14,6 +14,9 @@ class Contact(Base):
     email: Mapped[str] = mapped_column(String, unique=True, index=True)
     phone: Mapped[int] = mapped_column(String, index=True)
     birthday: Mapped[date] = mapped_column(DateTime)
+    created_at: Mapped[date] = mapped_column('created_at', DateTime, default=func.now(), nullable=True)
+    updated_at: Mapped[date] = mapped_column('updated_at', DateTime, default=func.now(), onupdate=func.now(),
+                                             nullable=True)
     user_id: Mapped[int] = mapped_column('user_id', ForeignKey('users.id', ondelete='CASCADE'), default=None)
     user: Mapped[str] = relationship('User', backref='contacts')
 
@@ -35,4 +38,5 @@ class User(Base):
     email: Mapped[str] = mapped_column(String(120), unique=True, nullable=False, index=True)
     password: Mapped[str] = mapped_column(String(255), nullable=False)
     created_at: Mapped[date] = mapped_column('created_at', DateTime, default=func.now())
+    updated_at: Mapped[date] = mapped_column('updated_at', DateTime, default=func.now(), onupdate=func.now())
     refresh_token: Mapped[str] = mapped_column(String(255), nullable=True)
