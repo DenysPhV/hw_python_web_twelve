@@ -1,4 +1,3 @@
-from src.database.models import Contact
 from sqlalchemy.orm import Session
 from sqlalchemy import and_
 from datetime import date, datetime
@@ -45,7 +44,7 @@ async def delete(contact_id, user: User, db: Session):
 
 
 async def find_by_name(contact_name, user: User, db: Session):
-    contact = db.query(Contact).filter(and_(Contact.user_id == user.id, first_name = contact_name)).first()
+    contact = db.query(Contact).filter(and_(Contact.user_id == user.id, first_name=contact_name)).first()
     return contact
 
 
