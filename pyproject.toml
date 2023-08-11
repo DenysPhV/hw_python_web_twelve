@@ -17,6 +17,7 @@ libgravatar = "^1.0.4"
 python-dotenv = "^1.0.0"
 pymysql = "^1.1.0"
 psycopg2-binary = "^2.9.7"
+psycopg2 = "^2.9.7"
 
 
 [build-system]

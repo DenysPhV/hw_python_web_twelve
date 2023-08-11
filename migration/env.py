@@ -6,8 +6,8 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from src.database.connector import Base
-from src.database.connector import SQLALCHEMY_DATABASE_URL
+from src.database.models import Base
+# from src.database.connector import SQLALCHEMY_DATABASE_URL
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -24,9 +24,11 @@ if config.config_file_name is not None:
 # target_metadata = mymodel.Base.metadata
 target_metadata = Base.metadata
 
-section = config.config_ini_section
-config.set_section_option(section, "DATABASE_URL", SQLALCHEMY_DATABASE_URL)
-config.set_main_option("sqlalchemy.url", SQLALCHEMY_DATABASE_URL)
+config.set_main_option("sqlalchemy.url", "postgresql://postgres:58796@127.0.0.1:5432/denis_fill_fa")
+# section = config.config_ini_section
+# config.set_section_option(section, "DATABASE_URL", SQLALCHEMY_DATABASE_URL)
+# config.set_main_option("sqlalchemy.url", SQLALCHEMY_DATABASE_URL)
+
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
